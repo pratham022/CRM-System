@@ -1,0 +1,23 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <form action="" method="POST">
+            {% csrf_token %}
+<!--            {{ form }}-->
+                {{ formset.management_form  }}
+                {% for form in formset %}
+                {{ form }}
+                <hr/>
+                {% endfor %}
+            <input class="btn btn-danger" type="submit" name="Submit" />
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!--When we submit the form, it goes to the same view which handles the GET request
+So, we do not need to mention action attribute in the form-->
